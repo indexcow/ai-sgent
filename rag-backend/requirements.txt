@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+langchain
+langchain-community
+qdrant-client
+python-docx
+PyPDF2
+docx2txt
+tiktoken
+requests
