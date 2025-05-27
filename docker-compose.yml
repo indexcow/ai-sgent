@@ -29,6 +29,23 @@ services:
       - qdrant_data:/qdrant/storage
     restart: unless-stopped
 
+  rag-backend:
+    build:
+      context: ./rag-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./rag-backend/app:/app
+    depends_on:
+      - qdrant
+      - ollama
+    environment:
+      OLLAMA_URL: http://ollama:11434
+      QDRANT_URL: http://qdrant:6333
+      COLLECTION_NAME: docs
+    restart: unless-stopped
+
+
 volumes:
   ollama:
   webui:
